@@ -26,3 +26,9 @@ Route::group(['prefix' => 'admin'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+     Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
+     Route::post('profile/create', 'Admin\ProfileController@create'); # 追記
+     Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
+});
