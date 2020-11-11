@@ -34,4 +34,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
      Route::post('profile/edit','Admin\ProfileController@update')->middleware('auth');
 });
 
-Route::get('/profile', 'ProfileController@index')->middleware('auth');
+Route::get('/profile', 'ProfileController@index');
+Route::get('/', 'NewsController@index');
